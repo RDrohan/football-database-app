@@ -1,21 +1,20 @@
 import 'grommet/grommet.min.css';
 
+import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+
+import Home from './component/Home';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql'
 })
 
-import React, { Component } from 'react';
-
 class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="app">
-          <p>Application Here</p>
-        </div>
+        <Home />
       </ApolloProvider>
     );
   }
