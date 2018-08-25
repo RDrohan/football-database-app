@@ -13,7 +13,7 @@ query($countryId: ID) {
     }
 }`
 
-const Leagues = ({ countryId }) => (
+const Leagues = ({ countryId, goToTeams }) => (
 	<Query query={GET_COUNTRY_LEAGUES_QUERY} variables={{ countryId }}>
 		{({ loading, error, data }) => {
 			if (loading) return <div>Getting leagues ...</div>
@@ -28,7 +28,7 @@ const Leagues = ({ countryId }) => (
 				<div>
 					{
 						data.countryLeagues.map(league => {
-							return <ListItem key={league.id} justify='between' separator='horizontal'>
+							return <ListItem key={league.id} justify='between' separator='horizontal' onClick={() => goToTeams(league.id) }>
 								<span>{league.name}</span>
 								<span className='secondary'>{league.level}</span>
 							</ListItem>

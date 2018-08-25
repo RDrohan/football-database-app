@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import Home from './component/Home';
 import League from './component/League';
+import Team from './component/Team';
 
 import Box from 'grommet/components/Box';
 
@@ -19,16 +20,17 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <Navbar />
-        <Box pad='large'
-          responsive={true}>
-          <Router>
-            <div>
+        <Router>
+          <div>
+            <Navbar />
+            <Box pad='large'
+              responsive={true}>
               <Route exact path="/" component={Home} />
-              <Route exact path="/leagues/:countryId" component={League} />
-            </div>
-          </Router>
-        </Box>
+              <Route path="/leagues/:countryId" component={League} />
+              <Route path="/teams/:leagueId" component={Team} />
+            </Box>
+          </div>
+        </Router>
       </ApolloProvider>
     );
   }

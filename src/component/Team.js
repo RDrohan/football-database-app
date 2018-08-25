@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import List from 'grommet/components/List';
 import Headline from 'grommet/components/Headline';
 
-import Leagues from '../queries/leagues';
+import Teams from '../queries/teams';
 
-class League extends Component {
+class Team extends Component {
   constructor(props) {
     super(props);
-    this.goToTeams = this.goToTeams.bind(this);
     this.state = {
 
     }
-  }
-
-  
-  goToTeams(leagueId) {
-    this.props.history.push(`/teams/${leagueId}`);
   }
 
   render() {
@@ -24,14 +18,14 @@ class League extends Component {
         <Headline strong={true}
           align='center'
           size='small'>
-          Select A League
+          Select A Team
         </Headline>
         <List>
-          <Leagues countryId={this.props.match.params.countryId} goToTeams={this.goToTeams} />
+          <Teams leagueId={this.props.match.params.leagueId} />
         </List>
       </div>
     );
   }
 }
 
-export default League;
+export default Team;

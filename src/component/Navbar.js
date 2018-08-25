@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
@@ -27,7 +28,9 @@ class Navbar extends Component {
 						responsive={false}>
 						<Menu icon={<MenuIcon />}
 							dropAlign={{ "right": "right" }}>
-							<Anchor href="/" className='active'>Home</Anchor>
+							<Link to="/">
+								<Anchor className='active'>Home</Anchor>
+							</Link>
 						</Menu>
 					</Box>
 				</Header>
