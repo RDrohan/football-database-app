@@ -8,7 +8,7 @@ import Anchor from 'grommet/components/Anchor';
 
 import MenuIcon from 'grommet/components/icons/base/Menu';
 
-class Home extends Component {
+class Navbar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,9 +27,7 @@ class Home extends Component {
 						responsive={false}>
 						<Menu icon={<MenuIcon />}
 							dropAlign={{ "right": "right" }}>
-							<Anchor href='#' className='active'>Link 1</Anchor>
-							<Anchor href='#'>Link 2</Anchor>
-							<Anchor href='#'>Link 3</Anchor>
+							<Anchor href="/" className='active'>Home</Anchor>
 						</Menu>
 					</Box>
 				</Header>
@@ -38,4 +36,4 @@ class Home extends Component {
 	}
 }
 
-export default Home;
+export default Navbar;

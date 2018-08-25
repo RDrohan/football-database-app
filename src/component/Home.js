@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import List from 'grommet/components/List';
 import Headline from 'grommet/components/Headline';
 
@@ -7,9 +8,14 @@ import Countries from '../queries/countries';
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.goToCountry = this.goToCountry.bind(this);
     this.state = {
 
     }
+  }
+
+  goToCountry(countryId) {
+    this.props.history.push(`/leagues/${countryId}`);
   }
 
   render() {
@@ -21,11 +27,11 @@ class Home extends Component {
           Select A Country
         </Headline>
         <List>
-          <Countries />
+          <Countries goToCountry={this.goToCountry} />
         </List>
       </div>
     );
   }
 }
 
-export default Home;
+export default withRouter(Home);

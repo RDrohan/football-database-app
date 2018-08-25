@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navbar from './component/Navbar';
 import Home from './component/Home';
+import League from './component/League';
 
 import Box from 'grommet/components/Box';
 
@@ -24,6 +25,7 @@ class App extends Component {
           <Router>
             <div>
               <Route exact path="/" component={Home} />
+              <Route exact path="/leagues/:countryId" component={League} />
             </div>
           </Router>
         </Box>

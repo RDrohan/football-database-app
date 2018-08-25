@@ -13,7 +13,7 @@ const GET_COUNTRIES_QUERY = gql`
     }
 }`
 
-const Countries = () => (
+const Countries = ({ goToCountry }) => (
 	<Query query={GET_COUNTRIES_QUERY}>
 		{({ loading, error, data }) => {
 			if (loading) return <div>Getting countries ...</div>
@@ -28,7 +28,7 @@ const Countries = () => (
 				<div>
 					{
 						data.countries.map(country => {
-							return <ListItem key={country.id} justify='between' separator='horizontal' onClick={() => alert(country.id)}>
+							return <ListItem key={country.id} justify='between' separator='horizontal' onClick={() => goToCountry(country.id) }>
 								<span>{country.name}</span>
 								<span className='secondary'>{country.trigramme}</span>
 							</ListItem>
