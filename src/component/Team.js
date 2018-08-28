@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import List from 'grommet/components/List';
-import Headline from 'grommet/components/Headline';
 
-import Teams from '../queries/teams';
+import TeamProfile from '../queries/team-profile';
 
 class Team extends Component {
   constructor(props) {
@@ -14,15 +12,8 @@ class Team extends Component {
 
   render() {
     return (
-      <div className="league">
-        <Headline strong={true}
-          align='center'
-          size='small'>
-          Select A Team
-        </Headline>
-        <List>
-          <Teams leagueId={this.props.match.params.leagueId} />
-        </List>
+      <div className="team-profile">
+          <TeamProfile teamId={this.props.match.params.teamId} />
       </div>
     );
   }
