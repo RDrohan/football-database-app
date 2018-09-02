@@ -68,7 +68,7 @@ const Team = ({ teamId }) => (
                         uppercase={true}>
                         City
                     </Label>
-                    <Paragraph size='xlarge'>
+                    <Paragraph size='large'>
                         {team.stadium.city.name}
                     </Paragraph>
                     <Label
@@ -76,7 +76,7 @@ const Team = ({ teamId }) => (
                         uppercase={true}>
                         Year Founded
                     </Label>
-                    <Paragraph size='xlarge'>
+                    <Paragraph size='large'>
                         {team.yearFounded}
                     </Paragraph>
                     <Label
@@ -84,7 +84,7 @@ const Team = ({ teamId }) => (
                         uppercase={true}>
                         Stadium Name
                     </Label>
-                    <Paragraph size='xlarge'>
+                    <Paragraph size='large'>
                         {team.stadium.name}
                     </Paragraph>
                     <Label
@@ -92,7 +92,7 @@ const Team = ({ teamId }) => (
                         uppercase={true}>
                         Seated / Total Capacity
                     </Label>
-                    <Paragraph size='xlarge'>
+                    <Paragraph size='large'>
                         {team.stadium.seatedCapacity} / {team.stadium.totalCapacity}
                     </Paragraph>
                     <Label
