@@ -5,6 +5,8 @@ import { Query } from 'react-apollo';
 import Heading from 'grommet/components/Heading';
 import Label from 'grommet/components/Label';
 import Paragraph from 'grommet/components/Paragraph';
+import Accordion from 'grommet/components/Accordion';
+import AccordionPanel from 'grommet/components/AccordionPanel';
 
 const GET_TEAM_QUERY = gql`
 query($teamId: ID) {
@@ -20,6 +22,12 @@ query($teamId: ID) {
                 name
             }
         }
+        winner {
+            competition {
+                name
+            }
+            season
+        }
     }
 }`
 
@@ -27,10 +35,27 @@ const Team = ({ teamId }) => (
     <Query query={GET_TEAM_QUERY} variables={{ teamId }}>
         {({ loading, error, data }) => {
             let { team } = data;
-            console.log(team);
-
             if (loading) return <div>Getting team info ...</div>
             if (error) return <div>Could not load profile</div>
+
+            let trophies = {};
+            for (let i = 0; i < team.winner.length; i++) {
+                let { competition, season } = team.winner[i];
+                if (trophies.hasOwnProperty(competition.name)) {
+                    trophies[competition.name].push(season);
+                } else {
+                    trophies[competition.name] = [season];
+                }
+            }
+
+            let trophyHTML = Object.keys(trophies).map((key) => {
+                return <AccordionPanel heading={key}>
+                    <Paragraph>
+                        {trophies[key].join(', ')}
+                    </Paragraph>
+                </AccordionPanel>
+            });
+
             return (
                 <div>
                     <Heading strong={true}
@@ -70,6 +95,14 @@ const Team = ({ teamId }) => (
                     <Paragraph size='xlarge'>
                         {team.stadium.seatedCapacity} / {team.stadium.totalCapacity}
                     </Paragraph>
+                    <Label
+                        margin='medium'
+                        uppercase={true}>
+                        Trophies
+                    </Label>
+                    <Accordion openMulti={true}>
+                        {trophyHTML}
+                    </Accordion>
                 </div>
             )
         }}
