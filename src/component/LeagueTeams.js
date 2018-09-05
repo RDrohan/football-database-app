@@ -3,6 +3,7 @@ import List from 'grommet/components/List';
 import Headline from 'grommet/components/Headline';
 
 import Teams from '../queries/teams';
+import BackButton from './BackButton';
 
 class LeagueTeams extends Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class LeagueTeams extends Component {
   }
 
   goToTeam(teamId) {
-    console.log(teamId);
     this.props.history.push(`/team/${teamId}`);
   }
 
@@ -24,7 +24,7 @@ class LeagueTeams extends Component {
         <Headline strong={true}
           align='center'
           size='small'>
-          Select A Team
+          Select A Team <BackButton></BackButton>
         </Headline>
         <List>
           <Teams leagueId={this.props.match.params.leagueId} goToTeam={this.goToTeam} />

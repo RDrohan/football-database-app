@@ -3,6 +3,7 @@ import List from 'grommet/components/List';
 import Headline from 'grommet/components/Headline';
 
 import Leagues from '../queries/leagues';
+import BackButton from './BackButton';
 
 class League extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class League extends Component {
         <Headline strong={true}
           align='center'
           size='small'>
-          Select A League
+          Select A League <BackButton></BackButton>
         </Headline>
         <List>
           <Leagues countryId={this.props.match.params.countryId} goToTeams={this.goToTeams} />

@@ -7,6 +7,7 @@ import Label from 'grommet/components/Label';
 import Paragraph from 'grommet/components/Paragraph';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
+import BackButton from '../component/BackButton';
 
 const GET_TEAM_QUERY = gql`
 query($teamId: ID) {
@@ -48,10 +49,11 @@ const Team = ({ teamId }) => (
                 }
             }
 
-            let trophyHTML = Object.keys(trophies).map((key) => {
-                return <AccordionPanel heading={key}>
+            let trophyHTML = Object.keys(trophies).map((key, index) => {
+                let trophyYears = trophies[key];
+                return <AccordionPanel key={index} heading={`${key} (${trophyYears.length})`}>
                     <Paragraph>
-                        {trophies[key].join(', ')}
+                        {trophyYears.join(', ')}
                     </Paragraph>
                 </AccordionPanel>
             });
@@ -61,7 +63,7 @@ const Team = ({ teamId }) => (
                     <Heading strong={true}
                         align='start'
                         margin='large'>
-                        {team.name}
+                        {team.name} <BackButton></BackButton>
                     </Heading>
                     <Label
                         margin='medium'
